@@ -1,4 +1,5 @@
-% Example to fit GPS data without considering error
+%% Example to fit GPS data without considering error
+% function used: build_G.m
 % Vickie Lee @ VT
 % 2021/03/15 v1
 
@@ -8,6 +9,7 @@ file = 'LNCH.neu';
 [t, N, E, U, Sn, Se, Su] = textread(file,'%f%f%f%f%f%f%f');
 ENU = [E,N,U];
 Senu = [Se,Sn,Su];
+
 %% Detect bad data (large sigma & sigma = 0)
 ic = find( Senu(:,1)>25 | Senu(:,2)>25 | Senu(:,3)>50 | Senu(:,1)==0 | Senu(:,2)==0 | Senu(:,3)==0);
 t(ic,:) = []; ENU(ic,:) = []; Senu(ic,:) = [];
